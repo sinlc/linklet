@@ -46,10 +46,10 @@
         var downloadTimer = setInterval(function () {
             if (timeleft <= 0) {
                 clearInterval(downloadTimer);
-                document.getElementById("countdown").innerHTML = "Finished";
+                document.getElementById("countdown").innerHTML = "Redirecting...";
                 window.location.href = targetURL; // Redirect to the specified URL
             } else {
-                document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+                document.getElementById("countdown").innerHTML = timeleft + " seconds before redirecting";
             }
             timeleft -= 1;
         }, 1000);
