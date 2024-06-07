@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="asset/img/favicon.png"  >
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>短链生成器</title>
+    <title>URL Shortner</title>
     <style>
       :root {
         --color-primary: #5c7cfa;
@@ -203,21 +203,21 @@
     </style>
   </head>
   <body>
-    <header><h1>短链生成器</h1></header>
+    <header><h1>URL Shortner</h1></header>
     <main x-data="app" x-cloak>
       <p x-show.transition.opacity="alert" :class="alert?.type" x-text="alert?.message"></p>
-      <input placeholder="输入要缩短的网址..." x-model="url" x-ref="url" />
+      <input placeholder="Please enter the URL to be shorten..." x-model="url" x-ref="url" />
       <details>
-        <summary>自定义设置</summary>
+        <summary>Slug</summary>
         <div>
           <input placeholder="slug" x-model="slug" />
-          <small>不设置则随机生成 slug</small>
+          <small>Random slug will be assigned if no custom slug was given</small>
         </div>
       </details>
-      <button :class="{ loading }" :disabled="loading || isValidated()" @click="submit($refs, $nextTick)">生成</button>
+      <button :class="{ loading }" :disabled="loading || isValidated()" @click="submit($refs, $nextTick)">Create</button>
     </main>
     <footer>
-      基于 <a href="https://github.com/harrisonwang/linklet" target="_blank">Cloudflare</a> 的短链生成器
+      Based on <a href="https://github.com/harrisonwang/linklet" target="_blank">Cloudflare</a>
     </footer>
     <script src="asset/js/alpine.js"></script>
     <script>
@@ -263,7 +263,7 @@
 
               $nextTick(() => {
                 $refs.url.select()
-                this.alert = { type: 'success', message: `链接 ${document.execCommand('Copy') ? '复制' : '生成'} ` }
+                this.alert = { type: 'success', message: `URL ${document.execCommand('Copy') ? 'Copied' : '& Created'} ` }
               })
             })
             .catch(e => {
